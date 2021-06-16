@@ -1,21 +1,24 @@
 import './App.css';
+import {Button, Input, Space} from "antd";
+import {useState} from "react";
 
 function App() {
+  const {mysql} = global
+  let [src,setSrc] = useState({});
   return (
     <div className="App">
       <header className="App-header">
         <img src="logo.svg" className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Space direction='vertical'>
+            <Button type='primary'>Click</Button>
+        </Space>
+
+        {/*<Button onClick={() => {*/}
+
+        {/*}}>*/}
+        {/*  Click*/}
+        {/*</Button>*/}
+
       </header>
     </div>
   );

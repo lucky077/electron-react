@@ -1,1 +1,4 @@
-global.fs = require('fs')
+
+window.addEventListener('DOMContentLoaded', () => {
+
+})

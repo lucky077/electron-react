@@ -1,27 +1,23 @@
 import './App.css';
-import {Button, Input, Space} from "antd";
-import {useState} from "react";
+import ReactLogo from "./components/ReactLogo";
+import React, {createRef} from "react";
+
+const Logo = React.createContext(createRef());
 
 function App() {
-  const {mysql} = global
-  let [src,setSrc] = useState({});
+
+    let logoRef = React.createRef();
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src="logo.svg" className="App-logo" alt="logo" />
-        <Space direction='vertical'>
-            <Button type='primary'>Click</Button>
-        </Space>
+        <ReactLogo ref={logoRef}/>
+        <Logo.Provider value={logoRef}>
 
-        {/*<Button onClick={() => {*/}
-
-        {/*}}>*/}
-        {/*  Click*/}
-        {/*</Button>*/}
-
-      </header>
+        </Logo.Provider>
     </div>
   );
 }
 
 export default App;
+export {Logo}

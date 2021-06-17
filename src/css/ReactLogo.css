@@ -1,0 +1,27 @@
+
+.App-logo {
+  height: 20vmin;
+  width: 20vmin;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  transition: 1s;
+}
+
+.App-logo.normal {
+  animation: App-logo-spin infinite 10s linear;
+}
+
+.App-logo.back {
+  transform: translate(0px,0px) scale(1) rotate(0deg) rotate3d(0,0,0,0deg);
+}
+
+
+@keyframes App-logo-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

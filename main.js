@@ -1,9 +1,22 @@
 const { app, BrowserWindow ,Menu, Tray } = require('electron')
 const debug = require('electron-debug');
 const path = require('path')
+const express = require('express')
+const expressApp = express()
 
 debug({showDevTools: true})
 
+expressApp.use(express.static('build'))
+expressApp.get('/*', (req, res) => {
+    let options = {
+        root: __dirname,
+        headers: {
+        }
+    }
+    res.sendFile('build/index.html',options)
+})
+
+expressApp.listen(3001)
 
 function createWindow () {
 
@@ -11,8 +24,10 @@ function createWindow () {
         title: '',//需要与html title一致
         width: 1600,
         height: 900,
+        minWidth: 800,
+        minHeight: 600,
         // frame: false,//无边框
-        center: true,//初始居中
+        center: true,//初始居中v
         autoHideMenuBar: true,//隐藏菜单栏
         // alwaysOnTop : true,//窗口永远覆盖其他窗口
         // skipTaskbar: true,//任务栏显示
@@ -30,7 +45,7 @@ function createWindow () {
     if (process.env.dev == 1) {
         win.loadURL('http://localhost:3000').then()
     }else {
-        win.loadFile('build/index.html').then()
+        win.loadURL('http://localhost:3001').then()
     }
     return win
 }
